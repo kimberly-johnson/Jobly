@@ -1,0 +1,8 @@
+div.navbar {
+    border-bottom: 2px green solid;
+}
+
+ul.navbar li {
+    display: inline;
+    margin: 20px;
+}
