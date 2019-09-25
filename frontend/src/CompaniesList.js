@@ -24,7 +24,6 @@ class CompaniesList extends Component {
     if (result) {
       this.setState({ companies: result.companies })
     }
-    console.log('result is', result);
   }
 
   handleChange(e) {
@@ -40,9 +39,9 @@ class CompaniesList extends Component {
           </input>
           <button>Search</button>
         </form>
-          {this.state.companies.map(company => (
-            <Company key={company.handle} company={company} />
-          ))}
+        {this.state.companies.map(company => (
+          <Company key={company.handle} company={company} />
+        ))}
       </div>
     );
   }

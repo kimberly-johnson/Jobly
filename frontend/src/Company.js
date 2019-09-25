@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './company.css';
 import { Link } from 'react-router-dom';
 
+//pure
 class Company
   extends Component {
   render() {
