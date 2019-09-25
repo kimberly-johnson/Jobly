@@ -10,7 +10,9 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Navbar />
-        <Routes />
+        <div className="container">
+          <Routes />
+        </div>
       </BrowserRouter>
     );
   }
