@@ -1,8 +1,10 @@
-div.navbar {
-    border-bottom: 2px green solid;
+nav.navbar {
+    border-bottom: 2px grey solid;
 }
 
-ul.navbar li {
+
+ul.navbar-nav li {
     display: inline;
-    margin: 20px;
+    margin-left: 20px;
 }
+
