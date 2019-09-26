@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import JoblyApi from "./JoblyApi";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -13,13 +12,9 @@ class LoginForm extends Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  async handleLogin(e) {
-    e.preventDefault();
-    let token = await JoblyApi.login(this.state)
-    localStorage.setItem('token', JSON.stringify(token));
-    if (localStorage.getItem('token')) {
-      // window.location.reload();
-    }
+  handleLogin(e) {
+    e.preventDefault(e);
+    this.props.logIn(this.state);
   }
 
   handleChange(e) {

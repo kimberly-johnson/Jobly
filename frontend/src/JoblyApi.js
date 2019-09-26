@@ -73,6 +73,12 @@ class JoblyApi {
     let result = await this.request('users', data, 'post');
     return result;
   }
+
+  static async update(data) {
+    console.log('data is', data)
+    let result = await this.request(`users/${data.username}`, data, 'patch');
+    return result;
+  }
 }
 
 export default JoblyApi;
