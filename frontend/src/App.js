@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       loggedIn: true,
-      username: ''
+      userData: {}
     }
 
     this.logUserIn = this.logUserIn.bind(this);
@@ -30,18 +30,18 @@ class App extends Component {
   async logUserIn(data) {
     let token = await JoblyApi.login(data);
     localStorage.setItem('token', JSON.stringify(token));
-    this.setState({ loggedIn: true, username: data.username });
+    this.setState({ loggedIn: true });
   }
 
   logUserOut() {
     localStorage.clear();
     this.setState({ loggedIn: false });
-
   }
 
   async getUserData(username) {
     let userData = await JoblyApi.getUser(username);
-    console.log("USER DATA", userData);
+    this.setState( {userData: userData})
+    localStorage.setItem('userData', JSON.stringify(userData.user));
   }
 
   render() {
@@ -52,7 +52,8 @@ class App extends Component {
           <Routes username={this.state.username}
             logIn={this.logUserIn}
             loggedIn={this.state.loggedIn}
-            getUserData={this.getUserData} />
+            getUserData={this.getUserData} 
+            userData={this.state.userData}/>
         </div>
       </BrowserRouter>
     );

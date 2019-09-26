@@ -15,11 +15,11 @@ class Routes extends Component {
     if (this.props.loggedIn === true) {
       return (
         <Switch>
-          <Route exact path="/login" render={() => <Login logIn={this.props.logIn} getUserData={this.props.getUserData}/>} />
+          <Route exact path="/login" render={() => <Login logIn={this.props.logIn} getUserData={this.props.getUserData} />} />
           <Route exact path="/companies" render={() => <CompaniesList />} />
           <Route exact path="/companies/:handle" render={rtProps => <CompanyJobs {...rtProps} />} />
           <Route exact path="/jobs" render={() => <JobsList />} />
-          <Route exact path="/profile" render={() => <Profile username={this.props.username}/>} />
+          <Route exact path="/profile" render={() => <Profile username={this.props.username} getUserData={this.props.getUserData}/>} />
           <Route exact path="/" render={() => <Home />} />
         </Switch>
       );
@@ -28,14 +28,8 @@ class Routes extends Component {
     else {
       return (
         <Switch>
-          <Route exact path="/login" render={() => <Login logIn={this.props.logIn} getUserData={this.props.getUserData}/>} />
+          <Route exact path="/login" render={() => <Login logIn={this.props.logIn} getUserData={this.props.getUserData} />} />
           <Route path="/" render={() => <Home />} />
- 
-
-          {/* <Route exact path="/companies" render={() => <CompaniesList />} />
-          <Route exact path="/companies/:handle" render={rtProps => <CompanyJobs {...rtProps} />} />
-          <Route exact path="/jobs" render={() => <JobsList />} />
-          <Route exact path="/profile" render={() => <Profile />} /> */}
         </Switch>
       );
     }

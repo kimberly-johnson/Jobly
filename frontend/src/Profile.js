@@ -5,7 +5,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <EditProfileForm username={this.props.username}/>
+        <EditProfileForm username={this.props.username} getUserData={this.props.getUserData}/>
       </div>
     );
   }
