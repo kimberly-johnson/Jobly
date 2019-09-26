@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import JoblyApi from './JoblyApi';
+import JoblyApi from "./JoblyApi";
 import Job from "./Job";
 
 class CompanyJobs extends Component {
@@ -7,7 +7,7 @@ class CompanyJobs extends Component {
     super(props);
     this.state = {
       jobs: []
-    }
+    };
   }
 
   async componentDidMount() {

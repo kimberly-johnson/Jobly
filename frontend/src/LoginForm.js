@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import JoblyApi from "./JoblyApi";
-import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loggedIn: false
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -24,7 +24,7 @@ class LoginForm extends Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -32,9 +32,9 @@ class LoginForm extends Component {
     if (localStorage.getItem('token')) {
       return (
         <div>
-          <Redirect to='/'></Redirect>
+          <Redirect to='/companies'></Redirect>
         </div>
-      )
+      );
     }
     else {
       return (

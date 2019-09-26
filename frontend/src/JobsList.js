@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import JoblyApi from './JoblyApi';
+import JoblyApi from "./JoblyApi";
 import Job from "./Job";
 
 class JobsList extends Component {
@@ -7,7 +7,7 @@ class JobsList extends Component {
     super(props)
     this.state = {
       jobs: []
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -33,12 +33,19 @@ class JobsList extends Component {
   render() {
     return (
       <div>
-        JobsList
-        <form onSubmit={this.handleSearch}>
-          <input onChange={this.handleChange} name="search" type="text">
-          </input>
-          <button>Search</button>
+        <h2>These jobs are available!</h2>
+        <br></br>
+        <form onSubmit={this.handleSearch} className="form-inline">
+          <div className="form-group mx-sm-3 mb-2">
+            <input onChange={this.handleChange}
+              name="search"
+              type="text"
+              className="form-control">
+            </input>
+          </div>
+          <button type="submit" className="btn btn-outline-secondary">Search</button>
         </form>
+        <br></br>
         {this.state.jobs.map(job => (
           <Job key={job.id} job={job} companyName={job.company_handle} />
         ))}

@@ -8,16 +8,16 @@ class Search extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
- 
-
   render() {
 
     return (
-      <div>
+      <div className="input-group mb-3">
         <form onSubmit={this.handleSearch}>
-          <input type="text">
+          <input type="text" className="form-control" aria-label="company search" aria-describedby="button-addon2">
           </input>
-          <button>Search</button>
+          <div className="input-group-append">
+            <button className="btn btn-outline-secondary">Search</button>
+          </div>
         </form>
       </div>
     );

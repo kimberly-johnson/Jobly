@@ -1,10 +1,25 @@
 nav.navbar {
     border-bottom: 2px grey solid;
+    font-size: 20px;
+    font-weight: bold;
 }
 
+.navbar-brand {
+    font-size: 40px;
+}
 
 ul.navbar-nav li {
     display: inline;
     margin-left: 20px;
+}
+
+.navbar-brand :hover {
+    text-decoration: none;
+    color: rgb(9, 9, 104);
+}
+
+nav.navbar :hover {
+    text-decoration: none;
+    color: rgb(9, 9, 104);
 }
 

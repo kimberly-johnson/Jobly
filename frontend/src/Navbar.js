@@ -21,7 +21,7 @@ class Navbar extends Component {
             <li><span onClick={this.logout}><NavLink exact to="/">Log out</NavLink></span></li>
           </ul>
         </nav>
-      )
+      );
     }
     else {
       return (
@@ -31,7 +31,7 @@ class Navbar extends Component {
             <li><NavLink exact to="/">Log in</NavLink></li>
           </ul>
         </nav>
-      )
+      );
     }
   }
 }
