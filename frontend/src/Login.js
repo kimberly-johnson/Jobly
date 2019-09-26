@@ -48,7 +48,7 @@ class Login extends Component {
               </ul>
             </div>
             <div className="card-body">
-              {this.state.active === "login" ? <LoginForm logIn={this.props.logIn} />
+              {this.state.active === "login" ? <LoginForm logIn={this.props.logIn} getUserData={this.props.getUserData} />
                 : <SignUpForm />}
             </div>
           </div>

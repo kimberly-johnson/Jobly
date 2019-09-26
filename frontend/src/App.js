@@ -15,6 +15,7 @@ class App extends Component {
 
     this.logUserIn = this.logUserIn.bind(this);
     this.logUserOut = this.logUserOut.bind(this);
+    this.getUserData = this.getUserData.bind(this);
   }
 
   componentDidMount() {
@@ -38,12 +39,20 @@ class App extends Component {
 
   }
 
+  async getUserData(username) {
+    let userData = await JoblyApi.getUser(username);
+    console.log("USER DATA", userData);
+  }
+
   render() {
     return (
       <BrowserRouter>
         <Navbar logOut={this.logUserOut} />
         <div className="container">
-          <Routes username={this.state.username} logIn={this.logUserIn} loggedIn={this.state.loggedIn} />
+          <Routes username={this.state.username}
+            logIn={this.logUserIn}
+            loggedIn={this.state.loggedIn}
+            getUserData={this.getUserData} />
         </div>
       </BrowserRouter>
     );

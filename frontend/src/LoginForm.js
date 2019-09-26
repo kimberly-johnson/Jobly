@@ -12,9 +12,10 @@ class LoginForm extends Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin(e) {
+  async handleLogin(e) {
     e.preventDefault(e);
-    this.props.logIn(this.state);
+    await this.props.logIn(this.state);
+    this.props.getUserData(this.state.username);
   }
 
   handleChange(e) {
@@ -22,7 +23,6 @@ class LoginForm extends Component {
   }
 
   render() {
-
     if (localStorage.getItem('token')) {
       return (
         <div>
