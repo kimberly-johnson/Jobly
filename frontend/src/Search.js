@@ -8,10 +8,7 @@ class Search extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  async handleSearch(search) {
-    let result = await JoblyApi.searchCompany(search);
-    return result;
-  }
+ 
 
   render() {
 

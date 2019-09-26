@@ -12,6 +12,7 @@ class User {
   /** authenticate user with username, password. Returns user or throws err. */
 
   static async authenticate(data) {
+    console.log("SERVER SIDE DATA", data)
     // try to find the user first
     const result = await db.query(
         `SELECT username, 
@@ -23,14 +24,14 @@ class User {
                 is_admin
           FROM users 
           WHERE username = $1`,
-        [data.username]
+        [data.data.username]
     );
 
     const user = result.rows[0];
 
     if (user) {
       // compare hashed password to a new hash from password
-      const isValid = await bcrypt.compare(data.password, user.password);
+      const isValid = await bcrypt.compare(data.data.password, user.password);
       if (isValid) {
         return user;
       }

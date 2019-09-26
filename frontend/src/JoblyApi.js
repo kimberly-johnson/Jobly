@@ -56,6 +56,13 @@ class JoblyApi {
     let result = await this.request(`companies/${handle}`);
     return result;
   }
+
+  static async login(data) {
+    console.log('data is', data.username)
+    let result = await this.request('login', { data } , 'post')
+    console.log('result is', result)
+    return result;
+  }
 }
 
 export default JoblyApi;
