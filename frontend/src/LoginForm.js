@@ -18,9 +18,8 @@ class LoginForm extends Component {
     let token = await JoblyApi.login(this.state)
     localStorage.setItem('token', JSON.stringify(token));
     if (localStorage.getItem('token')) {
-      window.location.reload();
+      // window.location.reload();
     }
-    console.log('localstorage', localStorage.getItem('token'));
   }
 
   handleChange(e) {
@@ -39,11 +38,10 @@ class LoginForm extends Component {
     else {
       return (
         <div>
-          <p>Login Form</p>
-          <form onSubmit={this.handleLogin}>
-            <input onChange={this.handleChange} placeholder="username" type="text" name="username"></input>
-            <input onChange={this.handleChange} placeholder="password" type="text" name="password"></input>
-            <button>Log in</button>
+          <form className="" onSubmit={this.handleLogin}>
+            <input required className="signUp" onChange={this.handleChange} placeholder="username" type="text" name="username"></input>
+            <input required className="signUp" onChange={this.handleChange} placeholder="password" type="text" name="password"></input>
+            <button className="btn btn-primary">Log in</button>
           </form>
         </div>
       );

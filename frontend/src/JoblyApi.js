@@ -3,10 +3,17 @@ import axios from 'axios';
 //helper methods for centralizing api queries/posts
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
-    paramsOrData._token = ( // for now, hardcode token for "testing"
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-    "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-    "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
+    // paramsOrData._token = ( // for now, hardcode token for "testing"
+    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
+    // "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
+    // "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
+    // console.log("are you getting here", localStorage.getItem("token"));
+
+    if(localStorage.getItem("token") !== null){
+      paramsOrData._token = JSON.parse(localStorage.getItem("token")).token;
+    } else {
+      paramsOrData._token =  "";
+    }
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
@@ -58,9 +65,12 @@ class JoblyApi {
   }
 
   static async login(data) {
-    console.log('data is', data.username)
-    let result = await this.request('login', { data } , 'post')
-    console.log('result is', result)
+    let result = await this.request('login', { data } , 'post');
+    return result;
+  }
+
+  static async signUp(data) {
+    let result = await this.request('users', data, 'post');
     return result;
   }
 }

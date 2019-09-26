@@ -1,0 +1,13 @@
+button.active {
+    font-weight: bold !important;
+}
+
+button.inactive {
+    font-weight: bold;
+    background-color: #f8f9fa;
+    border: 0 !important;
+}
+
+.col-12 {
+    margin-top: 100px;
+}

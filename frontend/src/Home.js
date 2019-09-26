@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class Home extends Component {
   render() {
+    if (localStorage.getItem('token')) {
+      return (
+        <Redirect to="/companies" />
+      );
+    }
+
     return (
       <div className="row">
         <div className="col-12 d-flex justify-content-center">
