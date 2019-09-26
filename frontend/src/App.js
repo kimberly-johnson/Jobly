@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: true
+      loggedIn: true,
+      username: ''
     }
 
     this.logUserIn = this.logUserIn.bind(this);
@@ -28,7 +29,7 @@ class App extends Component {
   async logUserIn(data) {
     let token = await JoblyApi.login(data);
     localStorage.setItem('token', JSON.stringify(token));
-    this.setState({ loggedIn: true });
+    this.setState({ loggedIn: true, username: data.username });
   }
 
   logUserOut() {
@@ -42,7 +43,7 @@ class App extends Component {
       <BrowserRouter>
         <Navbar logOut={this.logUserOut} />
         <div className="container">
-          <Routes logIn={this.logUserIn} loggedIn={this.state.loggedIn} />
+          <Routes username={this.state.username} logIn={this.logUserIn} loggedIn={this.state.loggedIn} />
         </div>
       </BrowserRouter>
     );

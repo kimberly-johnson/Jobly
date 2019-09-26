@@ -13,13 +13,14 @@ class Routes extends Component {
   // }
   render() {
     if (this.props.loggedIn === true) {
+      console.log(this.props.username);
       return (
         <Switch>
           <Route exact path="/login" render={() => <Login logIn={this.props.logIn} />} />
           <Route exact path="/companies" render={() => <CompaniesList />} />
           <Route exact path="/companies/:handle" render={rtProps => <CompanyJobs {...rtProps} />} />
           <Route exact path="/jobs" render={() => <JobsList />} />
-          <Route exact path="/profile" render={() => <Profile />} />
+          <Route exact path="/profile" render={() => <Profile username={this.props.username}/>} />
           <Route exact path="/" render={() => <Home />} />
         </Switch>
       );

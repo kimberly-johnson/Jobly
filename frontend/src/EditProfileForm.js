@@ -15,7 +15,7 @@ class EditProfileForm extends Component {
 
   async handleEdit(e) {
     e.preventDefault(e);
-    let result = await JoblyApi.update(this.state);
+    let result = await JoblyApi.update(this.state, this.props.username);
     console.log('result is', result);
   }
 
@@ -25,8 +25,8 @@ class EditProfileForm extends Component {
         <div className="col-12 d-flex justify-content-center">
           <div className="card shadow-sm p-4 mb-5 bg-white rounded text-center">
             <h3 className="card-title align-middle">Edit profile</h3>
+            <h5>{this.props.username}</h5>
             <form onSubmit={this.handleEdit}>
-              <input className="signUp" onChange={this.handleChange} placeholder="username" type="text" name="username"></input>
               <input className="signUp" onChange={this.handleChange} placeholder="First Name" type="text" name="first_name"></input>
               <input className="signUp" onChange={this.handleChange} placeholder="Last Name" type="text" name="last_name"></input>
               <input className="signUp" onChange={this.handleChange} placeholder="Email" type="text" name="email"></input>
