@@ -43,6 +43,7 @@ class Job {
 
     let finalQuery = baseQuery + whereExpressions.join(" AND ");
     const jobsRes = await db.query(finalQuery, queryValues);
+    console.log('job query', jobsRes.rows)
     return jobsRes.rows;
   }
 

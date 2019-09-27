@@ -11,11 +11,24 @@ class JobsList extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
   }
 
   async componentDidMount() {
     let jobs = await JoblyApi.getJobs();
     this.setState({ jobs });
+  }
+
+  changeStatus(id) {
+    this.setState(st => ({
+      jobs: st.jobs.map(job => {
+        if (job.id === id) {
+          return { ...job, state: 'applied' }
+        } else {
+          return job;
+        }
+      })
+    }))
   }
 
   async handleSearch(e) {
@@ -47,7 +60,7 @@ class JobsList extends Component {
         </form>
         <br></br>
         {this.state.jobs.map(job => (
-          <Job key={job.id} job={job} companyName={job.company_handle} />
+          <Job key={job.id} job={job} companyName={job.company_handle} changeStatus={this.changeStatus} />
         ))}
       </div>
     );

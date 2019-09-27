@@ -8,6 +8,20 @@ class CompanyJobs extends Component {
     this.state = {
       jobs: []
     };
+
+    this.changeStatus = this.changeStatus.bind(this);
+  }
+
+  changeStatus(id) {
+    this.setState(st => ({
+      jobs: st.jobs.map(job => {
+        if (job.id === id) {
+          return { ...job, state: 'applied' }
+        } else {
+          return job;
+        }
+      })
+    }))
   }
 
   async componentDidMount() {
@@ -26,7 +40,7 @@ class CompanyJobs extends Component {
         <p>{this.state.companyDescription}</p>
         <div>
           {this.state.jobs.map(job => (
-            <Job key={job.id} companyName={this.state.companyName} job={job} />
+            <Job key={job.id} companyName={this.state.companyName} job={job} changeStatus={this.changeStatus}/>
           ))}
         </div>
       </div>

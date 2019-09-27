@@ -20,3 +20,12 @@
 .App-link {
   color: #09d3ac;
 }
+
+button.apply {
+  float: right;
+  font-weight: 600;
+}
+
+button.applied {
+  float: right;
+}
