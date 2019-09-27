@@ -63,6 +63,7 @@ class Company {
       throw error;
     }
 
+    //added join for apply button
     const jobsRes = await db.query(
         `SELECT id, title, company_handle, salary, equity, a.state
             FROM jobs 

@@ -11,7 +11,7 @@ class JobsList extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.changeStatus = this.changeStatus.bind(this);
+    this.updateApplyStatus = this.updateApplyStatus.bind(this);
   }
 
   async componentDidMount() {
@@ -19,16 +19,12 @@ class JobsList extends Component {
     this.setState({ jobs });
   }
 
-  changeStatus(id) {
+  updateApplyStatus(id) {
     this.setState(st => ({
       jobs: st.jobs.map(job => {
-        if (job.id === id) {
-          return { ...job, state: 'applied' }
-        } else {
-          return job;
-        }
+        return job.id === id ? { ...job, state: 'applied' } : job;
       })
-    }))
+    }));
   }
 
   async handleSearch(e) {
@@ -60,7 +56,11 @@ class JobsList extends Component {
         </form>
         <br></br>
         {this.state.jobs.map(job => (
-          <Job key={job.id} job={job} companyName={job.company_handle} changeStatus={this.changeStatus} />
+          <Job
+            key={job.id}
+            job={job}
+            companyName={job.company_handle}
+            updateApplyStatus={this.updateApplyStatus} />
         ))}
       </div>
     );

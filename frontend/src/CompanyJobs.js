@@ -9,38 +9,42 @@ class CompanyJobs extends Component {
       jobs: []
     };
 
-    this.changeStatus = this.changeStatus.bind(this);
+    this.updateApplyStatus = this.updateApplyStatus.bind(this);
   }
-
-  changeStatus(id) {
-    this.setState(st => ({
-      jobs: st.jobs.map(job => {
-        if (job.id === id) {
-          return { ...job, state: 'applied' }
-        } else {
-          return job;
-        }
-      })
-    }))
-  }
-
+  
   async componentDidMount() {
-    let jobs = await JoblyApi.getCompanyJobs(this.props.match.params.handle);
+    const res = await JoblyApi.getCompanyJobs(this.props.match.params.handle);
+    const { jobs, name, description } = res.company
+
     this.setState({
-      jobs: jobs.company.jobs,
-      companyName: jobs.company.name,
-      companyDescription: jobs.company.description
+      jobs,
+      companyName: name,
+      companyDescription: description
     });
   }
 
+  updateApplyStatus(id) {
+    this.setState(st => ({
+      jobs: st.jobs.map(job => {
+        return job.id === id ? { ...job, state: 'applied' } : job;
+      })
+    }));
+  }
+
   render() {
+    const { companyName, companyDescription, jobs } = this.state;
+
     return (
       <div>
-        <h2>{this.state.companyName}</h2>
-        <p>{this.state.companyDescription}</p>
+        <h2>{companyName}</h2>
+        <p>{companyDescription}</p>
         <div>
-          {this.state.jobs.map(job => (
-            <Job key={job.id} companyName={this.state.companyName} job={job} changeStatus={this.changeStatus}/>
+          {jobs.map(job => (
+            <Job
+              key={job.id}
+              companyName={companyName}
+              job={job}
+              updateApplyStatus={this.updateApplyStatus} />
           ))}
         </div>
       </div>
