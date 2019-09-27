@@ -29,3 +29,7 @@ button.apply {
 button.applied {
   float: right;
 }
+
+.current {
+  color: black;
+}
